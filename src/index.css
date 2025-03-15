@@ -1,0 +1,262 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+.loginPage-bigDiv{
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 200px;
+    padding: 15px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 25px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.form{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.input{
+    margin: 5px auto;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(12, 12, 12);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.input::placeholder{
+    color: rgb(0, 0, 0);
+}
+
+.input:hover{
+    background-color: rgba(0, 0, 0, 0.185);
+}
+
+.login-btn{
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    padding: 5px;
+}
+
+.login-btn:hover{
+    background-color: rgba(0, 0, 0, 0.185);
+}
+
+.general-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1000px; 
+    height:100vh;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    background: white;
+}
+
+.header-todo{
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaWQvhvLsvkhsuQ8urDn7FSMXPPsuyS-l6o58a0X4fJzdFbE3P-yR2P2braOSB_gLVdgA&usqp=CAU");
+}
+
+.navbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    gap: 3px;
+}
+
+.nav-btn{
+    background-color: rgb(186, 185, 185);
+    border-radius: 5px;
+    width: 150px;
+    height: 40px;
+}
+
+.nav-btn:hover{
+    background-color: rgb(156, 156, 156);
+}
+
+.add-tasks {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 800px; 
+    margin-left: 300px;
+    margin-bottom: 25px; 
+}
+
+.add-btn{
+    background-color: rgb(2, 97, 2);
+    color: white;
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.add-btn:hover{
+    background-color: rgb(8, 122, 8);
+}
+
+
+.all-tasks{
+    width: 900px;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(48, 47, 45);
+    border-radius: 5px;
+}
+
+.eachTask{
+    flex: 1;
+}
+
+ol {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    padding: 10px;
+}
+
+li{
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 20px;
+    margin-bottom: 10px;
+    background-color: hsl(0, 0%, 97%);
+    border: 2px solid hsla(0, 0%, 85%, 0.75);
+    border-radius: 5px;
+    width: 100%;
+    list-style-type: none;
+}
+
+.edit-btn {
+    justify-content: right;
+}
+
+input[type = 'checkbox'] {
+    margin-right: 15px;
+}
+
+.logout-btn {
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border: 2px solid rgb(0, 0, 0);
+    width: 80px;
+    border-radius: 10px;
+    margin-left: 30px;
+    margin-top: 80px;
+}
+
+.logout-btn:hover{
+    background-color: rgb(188, 247, 163);
+}
+
+.modal-form {
+    width: 400px;
+    height: 200px;
+    border: 2px solid rgb(13, 118, 2);
+    background-color: rgba(255, 255, 255, 0.759);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.task-details-header{
+    display: flex;
+    text-align: start;
+}
+
+.add-task-input{
+    padding: 5px;
+    background-color:  rgba(49, 241, 28, 0.572);
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+}
+.add-task-input::placeholder{
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+
+.control-btns{
+    display: flex;
+    gap: 20px;
+    text-align: end;
+}
+
+.save-btn{
+    background-color: rgb(21, 171, 4);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.save-btn:hover{
+    background-color:rgb(16, 145, 2);
+}
+
+.cancel-btn{
+    background-color: red;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.cancel-btn:hover{
+    background-color: rgb(207, 5, 5);
+}
+
+
