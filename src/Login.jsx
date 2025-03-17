@@ -1,4 +1,6 @@
 import React, {useState} from "react"
+import Button from "./Components/Button/Btn.jsx";
+
 
 function Login(){
     const [userName, setUsername] = useState('')
@@ -40,7 +42,7 @@ function Login(){
                             setPassword(e.target.value)}}
                         required
                 />
-                <button className="login-btn" type="submit">Login</button>
+                <Button className="login-btn" type="submit">Login</Button>
             </form>
             {error && <p style={{color: 'red'}}>{error}</p>}
         </div>
