@@ -60,17 +60,17 @@ html, body {
     background-color: rgba(0, 0, 0, 0.185);
 }
 
-.login-btn{
-    background-color: rgb(255, 255, 255);
-    border: 2px solid rgb(0, 0, 0);
-    border-radius: 10px;
-    color: rgb(0, 0, 0);
-    padding: 5px;
+body.open-modal:before{
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
 }
 
-.login-btn:hover{
-    background-color: rgba(0, 0, 0, 0.185);
-}
 
 .general-div {
     display: flex;
@@ -80,10 +80,25 @@ html, body {
     height:100vh;
 }
 
-.container{
+.container {
+    width: 100%;
+    max-width: 870px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
-    background: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .header-todo{
@@ -109,48 +124,28 @@ html, body {
     gap: 3px;
 }
 
-.nav-btn{
-    background-color: rgb(186, 185, 185);
-    border-radius: 5px;
-    width: 150px;
-    height: 40px;
-}
-
-.nav-btn:hover{
-    background-color: rgb(156, 156, 156);
-}
-
 .add-tasks {
+    margin-bottom: 25px;
+}
+
+.add-tasks__content {
     display: flex;
     justify-content: space-between; 
     align-items: center;
-    width: 800px; 
-    margin-left: 300px;
-    margin-bottom: 25px; 
+    max-width: 900px; 
+    width: 100%;
 }
-
-.add-btn{
-    background-color: rgb(2, 97, 2);
-    color: white;
-    width: 150px;
-    height: 40px;
-    border-radius: 5px;
-}
-
-.add-btn:hover{
-    background-color: rgb(8, 122, 8);
-}
-
 
 .all-tasks{
-    width: 900px;
-    height: 100%;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
     border: 2px solid rgb(48, 47, 45);
     border-radius: 5px;
+}
+
+.logout-parent{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .eachTask{
@@ -167,8 +162,9 @@ ol {
 li{
     display: flex;
     justify-content: space-between;
+    gap: 10px;
     text-align: left;
-    font-size: 1rem;
+    font-size: 20px;
     font-weight: bold;
     padding: 20px;
     margin-bottom: 10px;
@@ -179,33 +175,15 @@ li{
     list-style-type: none;
 }
 
-.edit-btn {
-    justify-content: right;
-}
-
 input[type = 'checkbox'] {
     margin-right: 15px;
 }
 
-.logout-btn {
-    background-color: rgb(255, 255, 255);
-    padding: 10px;
-    border: 2px solid rgb(0, 0, 0);
-    width: 80px;
-    border-radius: 10px;
-    margin-left: 30px;
-    margin-top: 80px;
-}
-
-.logout-btn:hover{
-    background-color: rgb(188, 247, 163);
-}
-
 .modal-form {
     width: 400px;
-    height: 200px;
-    border: 2px solid rgb(13, 118, 2);
-    background-color: rgba(255, 255, 255, 0.759);
+    height: 300px;
+    border: 2px solid rgb(89, 90, 89);
+    background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -215,6 +193,14 @@ input[type = 'checkbox'] {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
 }
 
 .task-details-header{
@@ -224,8 +210,8 @@ input[type = 'checkbox'] {
 
 .add-task-input{
     padding: 5px;
-    background-color:  rgba(49, 241, 28, 0.572);
-    border: 2px solid rgb(0, 0, 0);
+    background-color:  rgba(217, 215, 215, 0.572);
+    border: 2px solid rgb(116, 118, 116);
     border-radius: 5px;
 }
 .add-task-input::placeholder{
@@ -233,30 +219,12 @@ input[type = 'checkbox'] {
     color: rgb(0, 0, 0);
 }
 
-.control-btns{
-    display: flex;
-    gap: 20px;
-    text-align: end;
-}
-
-.save-btn{
-    background-color: rgb(21, 171, 4);
-    padding: 10px;
+.modal-datepicker{
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color:  rgba(217, 215, 215, 0.572);
+    border: 2px solid rgb(116, 118, 116);
     border-radius: 5px;
-}
-
-.save-btn:hover{
-    background-color:rgb(16, 145, 2);
-}
-
-.cancel-btn{
-    background-color: red;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.cancel-btn:hover{
-    background-color: rgb(207, 5, 5);
 }
 
 
