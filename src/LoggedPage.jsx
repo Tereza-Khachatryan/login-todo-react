@@ -1,33 +1,39 @@
 import React, { useState, useEffect } from "react";
-import AddTodoModal from "./AddTodoModal.jsx"
+import AddTodoModal from "./Components/AddTodoModal.jsx"
+import Button from "./Components/Button/Btn.jsx";
+import EditTodoModal from "./Components/EditTodoModal.jsx";
 
 function LoggedPage ({onLogout}){
     const [tasks, setTasks] = useState([])
     const [editingIndex, setEditingIndex] = useState(null)
-    const [editedTask, setEditedTask] = useState('')
     const [viewMode, setViewMode] = useState('all')
     const [showModal, setShowModal] = useState(false)
 
     function handleShowModal (){
+        setEditingIndex(null)
         setShowModal(true)
     }
 
-    function handleEdit(index){
-        setEditingIndex(index)
-        setEditedTask(tasks[index].task)
+    function handleShowEditModal(task){
+        setEditingIndex(task.id)
+        setShowModal(true)
     }
 
-    function handleSave(index){
-        const updatedTasks = [...tasks]
-        updatedTasks[index].task = editedTask
+    function handleSaveTask(updatedTask){
+        const updatedTasks = tasks.map(task => task.id === updatedTask.id ? updatedTask : task)
         setTasks(updatedTasks)
+        localStorage.setItem('task', JSON.stringify(updatedTask))
+        setShowModal(false)
         setEditingIndex(null)
-        setEditedTask('')
     }
 
     function handleCancel(){
-        setEditedTask('')
+        setShowModal(false)
         setEditingIndex(null)
+    }
+
+    function handleDelete(index){
+        setTasks(tasks.filter((_,i) => i !== index))
     }
 
     function handleCheckbox(index) {
@@ -36,9 +42,14 @@ function LoggedPage ({onLogout}){
         setTasks(updatedTasks);
     }
 
-    function addTodo(newTask){
-        if(newTask.trim() !== undefined){
-            setTasks(tasks => [{task: newTask, checked: false}, ...tasks])
+    function addTodo(newTaskObject){
+        if(newTaskObject.task && newTaskObject.selectedDate){
+            const newTaskWithDate = {
+                ...newTaskObject,
+                id: Date.now(),
+                checked: false
+            }
+            setTasks(tasks => [newTaskWithDate, ...tasks])
             setShowModal(false)
         }
     }
@@ -62,6 +73,7 @@ function LoggedPage ({onLogout}){
         }
     }, [])
 
+    
     useEffect(() => {
         localStorage.setItem('tasks', JSON.stringify(tasks))
     }, [tasks])
@@ -72,64 +84,76 @@ function LoggedPage ({onLogout}){
         return true
     }))
 
+    useEffect(() => {
+        if(showModal){
+            document.body.classList.add('open-modal')
+        }else {
+            document.body.classList.remove('open-modal')
+        }
+    }
+    ,[showModal])
+
     return (
         <div className="general-div-loggedPage">
-            {showModal && <AddTodoModal addTodo={addTodo} setShowModal={setShowModal} />} 
+            {showModal && !editingIndex && (<AddTodoModal addTodo={addTodo} setShowModal={setShowModal} />)}
+            
+            {showModal && editingIndex && (
+                <EditTodoModal
+                    task={tasks.find(task => task.id === editingIndex)}
+                    handleSaveTask = {handleSaveTask}
+                    setShowModal = {setShowModal}
+                />
+            )}
             <div className="header-todo">
                 <h1>Todo App</h1>
             </div>
             <nav className="navbar">
-                <button className="nav-btn" onClick={handleAll}>All</button>
-                <button className="nav-btn" onClick={handlePending}>Pending</button>
-                <button className="nav-btn" onClick={handleDone}>Done</button>
+                <Button className="nav-btn" onClick={handleAll}>All</Button>
+                <Button className="nav-btn" onClick={handlePending}>Pending</Button>
+                <Button className="nav-btn" onClick={handleDone}>Done</Button>
             </nav>
-            <div className="add-tasks">
-                <h2 className="paragraph-name">Tasks</h2>
-                <button className="add-btn" onClick={handleShowModal}>+ Add tasks</button>
+            <div className="add-tasks container">
+                <div className="add-tasks__content">
+                    <h2 className="paragraph-name">Tasks</h2>
+                    <Button className="add-btn" onClick={handleShowModal}>+Add tasks</Button>
+                </div>
             </div>
-            <div className="all-tasks">
-                <ol>
-                    {taskDisplay.map((task, index) => {
-                        return (<li key={index}>
-                            <input 
-                                type="checkbox" 
-                                className="checkbox"
-                                checked= {task.checked}
-                                onChange={() => handleCheckbox(index)}
-                                />
-                            {editingIndex === index ? (
-                <>
-                  <input
-                    type="text"
-                    value={editedTask}
-                    onChange={(e) => setEditedTask(e.target.value)}
-                    className="edit-input"
-                  />
-                  <button className="save-btn" onClick={() => handleSave(index)}>
-                    Save
-                  </button>
-                  <button className="cancel-btn" onClick={handleCancel}>
-                    Cancel
-                  </button>
-                </>
-              ) : (
-                <>
-                  <label className="eachTask">
-                    {task.task}
-                  </label>
-                  <button className="edit-btn" onClick={() => handleEdit(index)}>
-                  🖊️
-                  </button>
-                </>
-              )}
-            </li>)
-                    })}
-                </ol>
+            <div className="container">
+                <div className="all-tasks">
+                    <ol>
+                        {taskDisplay.map((task, index) => {
+                            return (
+                            <li key={index}>
+                                <input 
+                                    type="checkbox" 
+                                    className="checkbox"
+                                    checked= {task.checked}
+                                    onChange={() => handleCheckbox(index)}
+                                    />
+                                {editingIndex !== task.id ? (
+                    <>
+                    <label className="eachTask">{task.task}</label>
+                    <span className="task-date">
+                        ({new Date(task.selectedDate)
+                        .toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })})
+                    </span>
+
+                    <Button className="edit-btn" onClick={() => handleShowEditModal(task)}>🖊️</Button>
+                    <Button className="delete-btn" onClick={() => handleDelete(index)}>Delete</Button>
+                    </>
+                ) : null}
+                </li>)
+                        })}
+                    </ol>
+                </div>
             </div>
-            <button className="logout-btn" onClick={onLogout}>Logout</button>
+            <div className="logout-parent container">
+                <Button className="logout-btn" onClick={onLogout}>Logout</Button>
+            </div>
         </div>
         
     )
 }
+
 
 export default LoggedPage
