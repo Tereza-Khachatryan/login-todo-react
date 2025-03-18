@@ -1,0 +1,29 @@
+.all-tasks{
+    width: 100%;
+    border: 2px solid rgb(48, 47, 45);
+    border-radius: 5px;
+}
+
+ol {
+    margin: 0;
+    width: 100%;
+    padding: 10px;
+
+    li{
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        text-align: left;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 20px;
+        margin-bottom: 10px;
+        background-color: hsl(0, 0%, 97%);
+        border: 2px solid hsla(0, 0%, 85%, 0.75);
+        border-radius: 5px;
+        width: 100%;
+        list-style-type: none;
+    }
+}
+
+    
