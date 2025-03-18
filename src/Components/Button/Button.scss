@@ -1,0 +1,99 @@
+.login-btn{
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    padding: 5px;
+
+    &:hover{
+        background-color: rgb(171, 171, 171);
+    }
+}
+
+.nav-btn{
+    background-color: rgb(186, 185, 185);
+    border-radius: 5px;
+    width: 150px;
+    height: 40px;
+
+    &:hover{
+        background-color: rgb(156, 156, 156);
+    }
+}
+
+
+.add-btn{
+    background-color: rgb(8, 122, 8);
+    color: white;
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+
+    &:hover{ 
+        background-color: rgb(2, 97, 2);
+    }
+}
+
+
+
+.edit-btn {
+    border-radius: 5px;
+    padding: 2px;
+
+    &:hover{
+        background-color: rgb(171, 171, 171);
+    }
+}
+
+
+
+.delete-btn{
+    border-radius: 5px;
+    padding: 2px;
+    margin-left: 2px;
+
+    &:hover{
+        background-color: rgb(171, 171, 171);
+    }
+}
+
+
+.logout-btn {
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border: 2px solid rgb(0, 0, 0);
+    width: 80px;
+    border-radius: 10px;
+    margin-left: 30px;
+    margin-top: 80px;
+
+    &:hover{
+        background-color: rgb(188, 247, 163);
+    }
+}
+
+.control-btns{
+    display: flex;
+    gap: 20px;
+    text-align: end;
+}
+
+.save-btn{
+    background-color: rgb(21, 171, 4);
+    padding: 10px;
+    border-radius: 5px;
+
+    &:hover{
+        background-color:rgb(16, 145, 2);
+    }
+}
+
+.cancel-btn{
+    background-color: red;
+    padding: 10px;
+    border-radius: 5px;
+
+    &:hover{
+        background-color: rgb(207, 5, 5);
+    }
+}
