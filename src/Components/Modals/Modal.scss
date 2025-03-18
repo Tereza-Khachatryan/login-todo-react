@@ -1,0 +1,63 @@
+
+.modal-form {
+    width: 400px;
+    height: 300px;
+    border: 2px solid rgb(89, 90, 89);
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.task-details-header{
+    display: flex;
+    text-align: start;
+}
+
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+
+.modal-datepicker{
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color:  rgba(217, 215, 215, 0.572);
+    border: 2px solid rgb(116, 118, 116);
+    border-radius: 5px;
+}
+
+body.open-modal:before{
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
