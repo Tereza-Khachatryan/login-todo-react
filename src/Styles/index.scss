@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+.general-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1000px; 
+    height:100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 870px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+
+.header-todo{
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaWQvhvLsvkhsuQ8urDn7FSMXPPsuyS-l6o58a0X4fJzdFbE3P-yR2P2braOSB_gLVdgA&usqp=CAU");
+}
+
+
+
+
+
+
